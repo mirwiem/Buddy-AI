@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#f6f7fb">
+
+    <title>Buddy — Your AI Study Companion</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- MOBILE OVERLAY -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="brand">
+            <div class="brand-mark">B</div>
+
+            <div>
+                <div class="brand-name">Buddy</div>
+                <div class="brand-subtitle">AI study companion</div>
+            </div>
+
+            <button class="sidebar-close" onclick="toggleSidebar()">×</button>
+        </div>
+
+        <div class="nav-section">
+
+            <div class="nav-label">WORKSPACE</div>
+
+            <button class="nav-item active" data-view="home">
+                <span class="nav-icon">⌂</span>
+                <span>Overview</span>
+            </button>
+
+            <button class="nav-item" data-view="tutor">
+                <span class="nav-icon">✦</span>
+                <span>AI Tutor</span>
+                <span class="nav-ai">AI</span>
+            </button>
+
+            <button class="nav-item" data-view="study">
+                <span class="nav-icon">▤</span>
+                <span>Study Kit</span>
+            </button>
+
+            <button class="nav-item" data-view="notes">
+                <span class="nav-icon">☷</span>
+                <span>My Notes</span>
+            </button>
+
+            <button class="nav-item" data-view="quiz">
+                <span class="nav-icon">✓</span>
+                <span>Practice</span>
+            </button>
+
+        </div>
+
+        <div class="sidebar-bottom">
+
+            <div class="buddy-principle">
+                <div class="principle-symbol">✦</div>
+
+                <div>
+                    <strong>Think first.</strong>
+                    <p>
+                        Buddy helps you understand instead of simply giving answers.
+                    </p>
+                </div>
+            </div>
+
+            <div class="system-status">
+                <span></span>
+                Buddy is ready
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <div class="main">
+
+        <!-- TOP BAR -->
+        <header class="topbar">
+
+            <button class="mobile-menu" onclick="toggleSidebar()">☰</button>
+
+            <div class="breadcrumb">
+                <span>Buddy</span>
+                <b>/</b>
+                <span id="breadcrumbCurrent">Overview</span>
+            </div>
+
+            <div class="topbar-right">
+
+                <div class="competition-badge">
+                    <span></span>
+                    Prototype
+                </div>
+
+                <button class="icon-button" onclick="toggleTheme()" title="Toggle theme">
+                    ◐
+                </button>
+
+                <div class="profile">
+                    <div class="profile-avatar">A</div>
+                    <div class="profile-name">Student</div>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- CONTENT -->
+        <main class="content">
+
+
+            <!-- ========================= -->
+            <!-- OVERVIEW -->
+            <!-- ========================= -->
+
+            <section class="view active-view" id="home">
+
+                <div class="welcome">
+
+                    <div>
+                        <div class="eyebrow">YOUR UNIVERSITY STUDY COMPANION</div>
+
+                        <h1>
+                            Study smarter.
+                            <span>Think deeper.</span>
+                        </h1>
+
+                        <p>
+                            Buddy turns your questions and lecture material
+                            into a learning experience built around
+                            understanding.
+                        </p>
+                    </div>
+
+                    <button class="button primary-button" onclick="showView('tutor')">
+                        Start learning
+                        <span>→</span>
+                    </button>
+
+                </div>
+
+
+                <!-- HERO -->
+                <div class="hero">
+
+                    <div class="hero-content">
+
+                        <div class="hero-tag">
+                            <span>✦</span>
+                            THE BUDDY METHOD
+                        </div>
+
+                        <h2>
+                            AI that makes you
+                            <em>think first.</em>
+                        </h2>
+
+                        <p>
+                            Most AI systems give students the answer.
+                            Buddy asks what you think first, identifies
+                            your reasoning, and guides you toward the solution.
+                        </p>
+
+                        <div class="method">
+
+                            <div class="method-step">
+                                <div class="method-number">01</div>
+                                <div>
+                                    <strong>Attempt</strong>
+                                    <span>You think first.</span>
+                                </div>
+                            </div>
+
+                            <div class="method-line"></div>
+
+                            <div class="method-step">
+                                <div class="method-number">02</div>
+                                <div>
+                                    <strong>Feedback</strong>
+                                    <span>Buddy diagnoses.</span>
+                                </div>
+                            </div>
+
+                            <div class="method-line"></div>
+
+                            <div class="method-step">
+                                <div class="method-number">03</div>
+                                <div>
+                                    <strong>Mastery</strong>
+                                    <span>You understand.</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <button class="text-button" onclick="showView('tutor')">
+                            Try the AI Tutor
+                            <span>↗</span>
+                        </button>
+
+                    </div>
+
+
+                    <!-- HERO VISUAL -->
+                    <div class="hero-visual">
+
+                        <div class="glow"></div>
+
+                        <div class="orbit orbit-one"></div>
+                        <div class="orbit orbit-two"></div>
+
+                        <div class="ai-core">
+
+                            <div class="core-logo">B</div>
+
+                            <div class="core-title">Buddy</div>
+
+                            <strong>
+                                What do
+                                <i>you</i>
+                                think?
+                            </strong>
+
+                            <small>
+                                Start with your first step.
+                            </small>
+
+                        </div>
+
+                        <div class="floating-card floating-one">
+                            <span>YOUR ATTEMPT</span>
+                            <strong>
+                                F = ma
+                            </strong>
+                            <small>
+                                “I think I should use Newton's second law.”
+                            </small>
+                        </div>
+
+                        <div class="floating-card floating-two">
+                            <span>BUDDY'S FEEDBACK</span>
+                            <strong>
+                                Good start.
+                            </strong>
+                            <small>
+                                “Now identify the mass and acceleration.”
+                            </small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FEATURES -->
+                <div class="section-heading">
+
+                    <div>
+                        <div class="eyebrow">YOUR STUDY WORKFLOW</div>
+                        <h2>Everything you need to learn.</h2>
+                    </div>
+
+                    <span>
+                        Designed for university students
+                    </span>
+
+                </div>
+
+
+                <div class="feature-grid">
+
+                    <button class="feature-card feature-blue" onclick="showView('tutor')">
+
+                        <div class="feature-top">
+                            <div class="feature-number">01</div>
+                            <div class="feature-icon">✦</div>
+                        </div>
+
+                        <div class="feature-category">LEARN</div>
+
+                        <h3>AI Tutor</h3>
+
+                        <p>
+                            Work through academic problems with
+                            guided reasoning instead of instant answers.
+                        </p>
+
+                        <div class="feature-arrow">→</div>
+
+                    </button>
+
+
+                    <button class="feature-card feature-purple" onclick="showView('study')">
+
+                        <div class="feature-top">
+                            <div class="feature-number">02</div>
+                            <div class="feature-icon">▤</div>
+                        </div>
+
+                        <div class="feature-category">TRANSFORM</div>
+
+                        <h3>Study Kit</h3>
+
+                        <p>
+                            Upload a lecture PDF and turn it into
+                            structured notes, flashcards and quizzes.
+                        </p>
+
+                        <div class="feature-arrow">→</div>
+
+                    </button>
+
+
+                    <button class="feature-card feature-green" onclick="showView('quiz')">
+
+                        <div class="feature-top">
+                            <div class="feature-number">03</div>
+                            <div class="feature-icon">✓</div>
+                        </div>
+
+                        <div class="feature-category">PRACTISE</div>
+
+                        <h3>Active Recall</h3>
+
+                        <p>
+                            Test what you actually remember before
+                            you walk into your exam.
+                        </p>
+
+                        <div class="feature-arrow">→</div>
+
+                    </button>
+
+                </div>
+
+
+                <div class="bottom-grid">
+
+                    <div class="quote-card">
+
+                        <div class="quote-mark">“</div>
+
+                        <h3>
+                            AI should make students
+                            <em>better thinkers</em>,
+                            not better at copying.
+                        </h3>
+
+                        <p>
+                            The idea behind Buddy
+                        </p>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div>
+                            <strong>03</strong>
+                            <span>study modes</span>
+                        </div>
+
+                        <div>
+                            <strong>PDF</strong>
+                            <span>your own material</span>
+                        </div>
+
+                        <div>
+                            <strong>01</strong>
+                            <span>student attempt first</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ========================= -->
+            <!-- AI TUTOR -->
+            <!-- ========================= -->
+
+            <section class="view" id="tutor">
+
+                <div class="page-header">
+
+                    <div>
+                        <div class="eyebrow">GUIDED LEARNING</div>
+
+                        <h1>AI Tutor</h1>
+
+                        <p>
+                            Buddy will never rush to give you the answer.
+                            Show your thinking first.
+                        </p>
+                    </div>
+
+                    <div class="integrity-badge">
+                        <span>✦</span>
+
+                        <div>
+                            <strong>Attempt-first</strong>
+                            <small>Learning integrity mode</small>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="tutor-layout">
+
+                    <div class="chat-card">
+
+                        <div class="chat-top">
+
+                            <div class="buddy-profile">
+
+                                <div class="buddy-avatar">B</div>
+
+                                <div>
+                                    <strong>Buddy Tutor</strong>
+                                    <span>
+                                        University learning coach
+                                        <i></i>
+                                        Ready
+                                    </span>
+                                </div>
+
+                            </div>
+
+                            <button class="outline-button" onclick="resetTutor()">
+                                New question
+                            </button>
+
+                        </div>
+
+
+                        <div class="messages" id="tutorMessages">
+
+                            <div class="message ai-message">
+
+                                <div class="message-avatar">B</div>
+
+                                <div class="message-body">
+
+                                    <span class="message-name">
+                                        Buddy
+                                    </span>
+
+                                    <p>
+                                        Hey! Give me a university question
+                                        you're working on.
+                                    </p>
+
+                                    <p>
+                                        I’ll ask for your first step before
+                                        we solve it together.
+                                    </p>
+
+                                    <div class="suggestions">
+
+                                        <button onclick="useQuestion('A 2 kg object accelerates at 3 m/s². What is the net force?')">
+                                            Physics example
+                                        </button>
+
+                                        <button onclick="useQuestion('Explain why the oxidation state of oxygen is usually -2.')">
+                                            Chemistry example
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="composer">
+
+                            <textarea
+                                id="question"
+                                rows="3"
+                                placeholder="Ask a university question..."
+                            ></textarea>
+
+                            <div class="composer-footer">
+
+                                <span>
+                                    Enter to send · Shift + Enter for new line
+                                </span>
+
+                                <button
+                                    class="button primary-button"
+                                    id="tutorBtn"
+                                    onclick="startTutor()"
+                                >
+                                    Ask Buddy
+                                    <span>→</span>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- COACHING PANEL -->
+
+                    <aside class="coach-card">
+
+                        <div class="coach-heading">
+                            <div class="eyebrow">HOW IT WORKS</div>
+                            <h3>Buddy coaches you.</h3>
+                        </div>
+
+
+                        <div class="coach-step active">
+
+                            <div class="coach-number">01</div>
+
+                            <div>
+                                <strong>Show your thinking</strong>
+                                <p>
+                                    Give a formula, idea, diagram,
+                                    explanation or best guess.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="coach-step">
+
+                            <div class="coach-number">02</div>
+
+                            <div>
+                                <strong>Get feedback</strong>
+                                <p>
+                                    Buddy identifies what is correct
+                                    and what needs attention.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="coach-step">
+
+                            <div class="coach-number">03</div>
+
+                            <div>
+                                <strong>Build the solution</strong>
+                                <p>
+                                    Continue the reasoning instead
+                                    of copying an answer.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="why-card">
+
+                            <div class="why-icon">✓</div>
+
+                            <div>
+                                <strong>Why attempt-first?</strong>
+                                <p>
+                                    Retrieval and reasoning help students
+                                    build understanding instead of becoming
+                                    dependent on AI.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </aside>
+
+                </div>
+
+            </section>
+
+
+            <!-- ========================= -->
+            <!-- STUDY KIT -->
+            <!-- ========================= -->
+
+            <section class="view" id="study">
+
+                <div class="page-header">
+
+                    <div>
+                        <div class="eyebrow">PDF → STUDY MATERIAL</div>
+
+                        <h1>Study Kit</h1>
+
+                        <p>
+                            Upload your lecture material and let Buddy
+                            transform it into a revision system.
+                        </p>
+                    </div>
+
+                    <div class="file-limit">
+                        PDF · MAX 20 MB
+                    </div>
+
+                </div>
+
+
+                <div class="study-layout">
+
+                    <div class="upload-card">
+
+                        <div
+                            class="upload-zone"
+                            id="dropzone"
+                            onclick="document.getElementById('pdfInput').click()"
+                            ondragover="event.preventDefault(); this.classList.add('dragging')"
+                            ondragleave="this.classList.remove('dragging')"
+                            ondrop="handleDrop(event)"
+                        >
+
+                            <input
+                                id="pdfInput"
+                                type="file"
+                                accept="application/pdf"
+                                hidden
+                                onchange="handleFile(this.files[0])"
+                            >
+
+                            <div class="upload-icon">
+                                ↑
+                            </div>
+
+                            <h3 id="uploadTitle">
+                                Drop your lecture PDF here
+                            </h3>
+
+                            <p id="uploadSub">
+                                or click anywhere to browse
+                            </p>
+
+                            <span>
+                                PDF only · 20 MB maximum
+                            </span>
+
+                        </div>
+
+
+                        <div class="file-ready hidden" id="fileReady">
+
+                            <div class="pdf-badge">PDF</div>
+
+                            <div>
+                                <strong id="fileName">
+                                    Lecture.pdf
+                                </strong>
+
+                                <span>
+                                    Uploaded and ready
+                                </span>
+                            </div>
+
+                            <button onclick="clearPdf(event)">
+                                ×
+                            </button>
+
+                        </div>
+
+
+                        <div
+                            class="kit-actions hidden"
+                            id="studyActions"
+                        >
+
+                            <button onclick="generateKit('notes')">
+
+                                <span class="kit-icon">☷</span>
+
+                                <strong>Smart Notes</strong>
+
+                                <small>
+                                    Key concepts & explanations
+                                </small>
+
+                            </button>
+
+
+                            <button onclick="generateKit('flashcards')">
+
+                                <span class="kit-icon">◇</span>
+
+                                <strong>Flashcards</strong>
+
+                                <small>
+                                    Active recall cards
+                                </small>
+
+                            </button>
+
+
+                            <button onclick="generateKit('quiz')">
+
+                                <span class="kit-icon">✓</span>
+
+                                <strong>Practice Quiz</strong>
+
+                                <small>
+                                    Test your understanding
+                                </small>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="flow-card">
+
+                        <div class="eyebrow">
+                            THE STUDY FLOW
+                        </div>
+
+                        <h2>
+                            One lecture.
+                            <span>Three ways to learn.</span>
+                        </h2>
+
+
+                        <div class="flow-row">
+
+                            <div class="flow-number">01</div>
+
+                            <div>
+                                <strong>Upload</strong>
+                                <p>
+                                    Start with the material your lecturer
+                                    already gave you.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="flow-row">
+
+                            <div class="flow-number">02</div>
+
+                            <div>
+                                <strong>Transform</strong>
+                                <p>
+                                    Buddy extracts the important concepts
+                                    and structures them for studying.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="flow-row">
+
+                            <div class="flow-number">03</div>
+
+                            <div>
+                                <strong>Practise</strong>
+                                <p>
+                                    Use notes, flashcards and quizzes
+                                    to test yourself.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="source-note">
+                            <strong>Source grounded</strong>
+                            <span>
+                                Buddy is instructed to use your uploaded
+                                lecture material as the source.
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="study-output hidden"
+                    id="studyOutput"
+                ></div>
+
+            </section>
+
+
+            <!-- ========================= -->
+            <!-- NOTES -->
+            <!-- ========================= -->
+
+            <section class="view" id="notes">
+
+                <div class="page-header">
+
+                    <div>
+                        <div class="eyebrow">YOUR MATERIAL</div>
+
+                        <h1>My Notes</h1>
+
+                        <p>
+                            AI-generated study notes from your lecture material.
+                        </p>
+                    </div>
+
+                    <button
+                        class="outline-button"
+                        onclick="showView('study')"
+                    >
+                        Create from PDF
+                    </button>
+
+                </div>
+
+
+                <div id="notesEmpty" class="empty-state">
+
+                    <div class="empty-icon">☷</div>
+
+                    <h2>No notes yet.</h2>
+
+                    <p>
+                        Upload a lecture PDF in Study Kit
+                        to generate your first set of notes.
+                    </p>
+
+                    <button
+                        class="button primary-button"
+                        onclick="showView('study')"
+                    >
+                        Upload lecture
+                        <span>→</span>
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="notesContent"
+                    class="notes-paper hidden"
+                ></div>
+
+            </section>
+
+
+            <!-- ========================= -->
+            <!-- QUIZ -->
+            <!-- ========================= -->
+
+            <section class="view" id="quiz">
+
+                <div class="page-header">
+
+                    <div>
+                        <div class="eyebrow">ACTIVE RECALL</div>
+
+                        <h1>Practice</h1>
+
+                        <p>
+                            Test yourself before the exam tests you.
+                        </p>
+                    </div>
+
+                    <button
+                        class="outline-button"
+                        onclick="showView('study')"
+                    >
+                        Generate quiz
+                    </button>
+
+                </div>
+
+
+                <div id="quizEmpty" class="empty-state">
+
+                    <div class="empty-icon">✓</div>
+
+                    <h2>No practice quiz yet.</h2>
+
+                    <p>
+                        Upload a lecture PDF and ask Buddy
+                        to create a quiz.
+                    </p>
+
+                    <button
+                        class="button primary-button"
+                        onclick="showView('study')"
+                    >
+                        Create practice quiz
+                        <span>→</span>
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="quizContent"
+                    class="quiz-container hidden"
+                ></div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</div>
+
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+
+<script src="/static/app.js"></script>
+
+</body>
+</html>
